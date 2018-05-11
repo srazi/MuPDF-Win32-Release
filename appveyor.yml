@@ -6,7 +6,7 @@ environment:
     VSVER: 14
     ARCH: x86
 
-version: {build}
+version: VC$(vsver)-$(arch).{build}
 
 build:
   parallel: true
