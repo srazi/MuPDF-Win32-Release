@@ -21,9 +21,11 @@ build_script:
   - call build.bat
 
 after_build:
-   - 7z a %APPVEYOR_BUILD_FOLDER%\mupdf\platform\win32\Release\*.lib %APPVEYOR_BUILD_FOLDER%\mupdf-libs.zip
+   - 7z a %APPVEYOR_BUILD_FOLDER%\mupdf\platform\win32\Release\*.lib %APPVEYOR_BUILD_FOLDER%\MuPDF-lib-vc%VSVER%_%ARCH%.zip
+   - 7z a %APPVEYOR_BUILD_FOLDER%\mupdf\platform\win32\Release\*.exe %APPVEYOR_BUILD_FOLDER%\MuPDF-bin-vc%VSVER%_%ARCH%.zip
 artifacts:
-   - path: mupdf-libs.zip
+   - path: MuPDF-lib-vc%VSVER%_%ARCH%.zip
+   - path: MuPDF-bin-vc%VSVER%_%ARCH%.zip
 
 # remote desktop connection on init
 init:
