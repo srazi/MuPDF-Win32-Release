@@ -1,13 +1,16 @@
 image:
-    - Visual Studio 2015
+    - Visual Studio 2017
 
 cache:
   - '%APPVEYOR_BUILD_FOLDER%/mupdf/platform/win32 -> %APPVEYOR_BUILD_FOLDER%/mupdf/platform/win32/mupdf.sln'
 
 environment:
   global:
-    VSVER: 14
-    ARCH: x86
+    VSVER: 15
+    ARCH: x64
+
+  matrix:
+    - VSVER: 14
 
 version: VC$(vsver)-$(arch).{build}
 
