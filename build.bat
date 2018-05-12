@@ -10,8 +10,7 @@ copy /y %APPVEYOR_BUILD_FOLDER%\scripts\fontdump.nmake scripts\
 
 cd platform\win32
 
-echo "Upgrade all project files..."
-devenv /upgrade mupdf.sln
+IF NOT EXIST "libmupdf.vcxproj" ( echo "Upgrade all project files (maybe it takes > 10min), please wait..." && devenv /upgrade mupdf.sln ) else ( echo "Use cached vcxproj files." )
 
 echo "Start building..."
 msbuild /m mupdf.sln /property:Configuration=Release

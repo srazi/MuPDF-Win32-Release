@@ -1,6 +1,10 @@
 image:
     - Visual Studio 2015
 
+cache:
+  - platform\win32\*.sln -> platform\win32\mupdf.sln
+  - platform\win32\*.vcxproj -> platform\win32\mupdf.sln
+
 environment:
   global:
     VSVER: 14
