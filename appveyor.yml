@@ -2,8 +2,7 @@ image:
     - Visual Studio 2015
 
 cache:
-  - platform\win32\*.sln -> platform\win32\mupdf.sln
-  - platform\win32\*.vcxproj -> platform\win32\mupdf.sln
+  - '%APPVEYOR_BUILD_FOLDER%/mupdf/platform/win32 -> %APPVEYOR_BUILD_FOLDER%/mupdf/platform/win32/mupdf.sln'
 
 environment:
   global:
