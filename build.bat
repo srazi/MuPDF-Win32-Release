@@ -1,5 +1,7 @@
 echo "Recursively clone mupdf..."
+
 git clone --recursive git://git.ghostscript.com/mupdf.git
+cd mupdf
 
 echo "Fix font not found errors..."
 copy resources\fonts\urw\NimbusSans-Bold.cff resources\fonts\urw\NimbusSansNarrow-Bold.cff
