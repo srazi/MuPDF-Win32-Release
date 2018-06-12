@@ -22,8 +22,8 @@ build_script:
   - cd mupdf\platform\win32
   - echo "Upgrade all project files (maybe it takes > 10min), please wait..."
   - devenv /upgrade mupdf.sln
-  - timeout /t 60
-  - msbuild /m mupdf.sln /property:Configuration=Release
+  - timeout /t 600
+  - msbuild /m mupdf.sln /property:Configuration=Release /p:Platform=Win32
 
 after_build:
    - 7z a %APPVEYOR_BUILD_FOLDER%\mupdf\platform\win32\Release\*.lib %APPVEYOR_BUILD_FOLDER%\MuPDF-lib-vc%VSVER%_%ARCH%.zip
