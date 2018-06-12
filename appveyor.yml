@@ -1,9 +1,6 @@
 image:
     - Visual Studio 2015
 
-cache:
-  - '%APPVEYOR_BUILD_FOLDER%/mupdf/platform/win32 -> %APPVEYOR_BUILD_FOLDER%/mupdf/platform/win32/mupdf.sln'
-
 environment:
   global:
     VSVER: 14
@@ -20,8 +17,13 @@ install:
   - echo "MuPDF BUILD %APPVEYOR_BUILD_VERSION%_%VSVER%_%ARCH%"
 
 build_script:
-  - echo "Call fetch and build script..."
-  - call build.bat
+  - echo "Recursively clone mupdf..."
+  - git clone --recursive git://git.ghostscript.com/mupdf.git
+  - cd mupdf\platform\win32
+  - echo "Upgrade all project files (maybe it takes > 10min), please wait..."
+  - devenv /upgrade mupdf.sln
+  - timeout /t 60
+  - msbuild /m mupdf.sln /property:Configuration=Release
 
 after_build:
    - 7z a %APPVEYOR_BUILD_FOLDER%\mupdf\platform\win32\Release\*.lib %APPVEYOR_BUILD_FOLDER%\MuPDF-lib-vc%VSVER%_%ARCH%.zip
