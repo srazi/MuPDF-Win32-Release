@@ -25,12 +25,12 @@ build_script:
   - msbuild /m libmupdf.vcxproj  /property:Configuration=Release /p:Platform=Win32
 
 after_build:
-   - 7z a %APPVEYOR_BUILD_FOLDER%\mupdf\platform\win32\Release\*.lib %APPVEYOR_BUILD_FOLDER%\MuPDF-lib-vc%VSVER%_%ARCH%.zip
-   - 7z a %APPVEYOR_BUILD_FOLDER%\mupdf\platform\win32\Release\*.exe %APPVEYOR_BUILD_FOLDER%\MuPDF-bin-vc%VSVER%_%ARCH%.zip
+   - 7z a %APPVEYOR_BUILD_FOLDER%\MuPDF-lib-vc%VSVER%_%ARCH%.7z %APPVEYOR_BUILD_FOLDER%\mupdf\platform\win32\Release\*.lib
+   - 7z a %APPVEYOR_BUILD_FOLDER%\MuPDF-bin-vc%VSVER%_%ARCH%.7z %APPVEYOR_BUILD_FOLDER%\mupdf\platform\win32\Release\*.exe
 
 artifacts:
-   - path: MuPDF-lib-vc%VSVER%_%ARCH%.zip
-   - path: MuPDF-bin-vc%VSVER%_%ARCH%.zip
+   - path: MuPDF-lib-vc%VSVER%_%ARCH%.7z
+   - path: MuPDF-bin-vc%VSVER%_%ARCH%.7z
 
 # remote desktop connection on init
 init:
